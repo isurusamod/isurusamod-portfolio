@@ -4,473 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Isuru Samod - Web Developer Portfolio 2026</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
+    Navigation
+    <nav class="navbar">
         <div class="container">
-            <nav>
-                <div class="logo">Portfolio</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-
+            <div class="nav-content">
+                <a href="index.html" class="logo">Isuru Samod</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content" style="display: flex; align-items: center; justify-content: space-between;">
-                <!-- Left Side: Text Content -->
-                <div class="text-content" style="flex: 1;">
-                    <h1>Hi, I'm <span class="highlight">Isuru Samod</span></h1>
-                    <h2>Web Developer & Designer</h2>
-                    <p>I create beautiful and functional websites with clean code.</p>
-
-                    <div class="contact-form">
-                        <h3 class="h4 font-weight-bold">Follow Me</h3>
-                        <ul style="list-style: none; padding: 0; display: flex; gap: 10px; margin-top: 20px;">
-                            <li class="ftco-animate">
-                                <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <span class="fab fa-linkedin" style="font-size: 24px;"></span>
-                                </a>
-                            </li>
-                            <li class="ftco-animate">
-                                <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <span class="fab fa-facebook" style="font-size: 24px;"></span>
-                                </a>
-                            </li>
-                            <li class="ftco-animate">
-                                <a href="https://github.com/isurusamod" target="_blank" rel="noopener noreferrer">
-                                    <span class="fab fa-github" style="font-size: 24px;"></span>
-                                </a>
-                            </li>
-                            <li class="ftco-animate">
-                                <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <span class="fab fa-whatsapp" style="font-size: 24px; color: #25d366;"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Right Side: Circular Photo -->
-
-                <div class="image-content" style="flex: 1; text-align: right; margin-left: auto; max-width: 20px;">
-                    <img src="images/bg_4.jpg" alt="Isuru Samod"
-                        style="width: 400px; height: 400px; border-radius: 50%; object-fit: cover;">
-                </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="about" class="about">
+    Hero Section
+    <section class="hero">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/bg_5.jpg" alt="Profile Picture">
-
-                </div>
-                <div class="about-text">
-                    <h3>Who am I?</h3>
-                    <p>I am an undergraduate student pursuing a Higher National Diploma in Information Technology
-                        (HNDIT) at SLIATE since 2021. With a strong passion for innovative design, development, and
-                        problem-solving, I constantly seek opportunities to explore and implement new ideas. My
-                        curiosity drives me to learn and experiment with emerging technologies, ensuring that I stay
-                        updated with industry trends.
-
-                        During my internship at Cypsolabs Pvt Ltd, a Sri Lankan technology firm specializing in website,
-                        mobile app, and software development, I gained hands-on experience in modern web technologies.
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting">Hi, I'm</p>
+                    <h1 class="hero-title">Isuru Samod</h1>
+                    <p class="hero-subtitle">Full Stack Web Developer</p>
+                    <p class="hero-description">
+                        Crafting innovative web solutions with modern technologies.
+                        user-centric website for 2026 and beyond.
                     </p>
-                    <h3>My Experience</h3>
-                    <p>
-                        Worked in Software Engineer Intern at Cypsolabs Pvt Ltd
-
-                        Worked on website, mobile app, and software development projects.
-
-                        Gained experience in React.js, Next.js, and Spring Boot.
-
-                        Developed and enhanced various projects, improving proficiency in modern web development
-                        frameworks.</p>
-
-                    <h3>My Approach</h3>
-                    <p>I believe in clean, efficient code and thoughtful design. I focus on creating websites that not
-                        only look great but also perform well and are accessible to all users.</p>
-
-
-
-                    <a href="https://drive.google.com/file/d/1yRZbKsAZvC-k5skwWzWPiSe01k3BUxDG/view?usp=drive_link"
-                        class="btn primary-btn">Download CV</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="project-filters">
-             
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="app">App Development</button>
-               
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-category="web">
-                    <div class="project-img">
-                        <img src="images/work2.jpg" alt="Project 1">
+                    <div class="hero-buttons">
+                        <a href="projects.html" class="btn btn-primary">View My Work</a>
+                        <a href="about.html" class="btn btn-secondary">About Me</a>
                     </div>
-                    <div class="project-info">
-                        <h3>1st project in SLIATE Developed a Web Application for Hotel</h3>
-                        <p>A fully responsive e-commerce website with booking functionality</p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>PHP</span>
-                            <span>Database sql</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://hotel-base-web-application.vercel.app/" class="btn small-btn">View
-                                Project</a>
-                            <a href="https://github.com/isurusamod/Hotel-base-Web-Application"
-                                class="btn small-btn secondary-btn">Source Code</a>
-                        </div>
+                    <div class="social-links">
+                        <a href="https://github.com/isurusamod" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+
                     </div>
                 </div>
-
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <img src="images/work5.jpg" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Bookshop billing system</h3>
-                        <p>A task management application with admin can add billing with crud functionality and local
-                            storage.</p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>Using Java and NetBeans IDE</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="" class="btn small-btn">View Project</a>
-                        <a href="https://github.com/isurusamod/java-Billing-system"
-                            class="btn small-btn secondary-btn">Source Code</a>
-                    </div>
+                <div class="profile-image">
+                    <img src="images/bg_1.jpg" alt="Isuru Samod" />
                 </div>
 
-                <div class="project-card" data-category="other">
-                    <div class="project-img">
-                        <img src="images/work1.jpg" alt="Project 4">
-                    </div>
-                    <div class="project-info">
-                        <h3>Finaly project in SLIATE Developed an Web Site For Caregiver</h3>
-                        <p>A fully responsive e-commerce website with user can find caregiver in area and booking the
-                            cregiver and payment functionality</p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Laravel Framework</span>
-                            <span>Database sql</span>
-
-                        </div>
-                        <div class="project-links">
-                            <a href="" class="btn small-btn">View Project</a>
-
-                            <a href="https://github.com/isurusamod/care-giver-web-Application"
-                                class="btn small-btn secondary-btn">Source Code</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-category="web">
-                    <div class="project-img">
-                        <img src="images/work4.png" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Portfolio Website</h3>
-                        <p>A clean and modern portfolio website showcasing my work and skills</p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://isurusamod.github.io/isurusamod-portfolio/" class="btn small-btn">View
-                                Project</a>
-                            <a href="https://github.com/isurusamod/isurusamod-portfolio"
-                             class="btn small-btn secondary-btn">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-
-              
-                <div class="project-card" data-category="other">
-                    <div class="project-img">
-                        <img src="images/work6.png" alt="Project 4">
-                    </div>
-                    <div class="project-info">
-                        <h3>courier management system system</h3>
-                        <p>A fully responsive e-commerce website with user can add parcel to the site and he can tracing
-                            parcel and admin can update functionality</p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Database sql</span>
-
-
-                        </div>
-                        <div class="project-links">
-                            <a href="https://cabolana.com/" class="btn small-btn">View Project</a>
-                            <a href="" class="btn small-btn secondary-btn">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-category="other">
-                    <div class="project-img">
-                        <img src="images/work7.png" alt="Project 4">
-                    </div>
-                    <div class="project-info">
-                        <h3>Software company web site</h3>
-                        <p>A fully responsive e-commerce website for the software company with full tech functionality
-                        </p>
-                        <p>Tech Stack:</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Database sql</span>
-
-                        </div>
-                        <div class="project-links">
-                            <a href="https://greenbiz.lk/" class="btn small-btn">View Project</a>
-                            <a href="" class="btn small-btn secondary-btn">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-content">
-                <div class="skills-text">
-                    <h3>Technical Skills</h3>
-                    <p>I've worked with a variety of technologies and tools throughout my career. Here are some of my
-                        key technical skills:</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Frontend Development</h4>
-                        <div class="skill-bars">
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>HTML</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>CSS</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>JavaScript</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Responsive Design</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>React.js</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Next.js</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-
-                            <div class="skill-bar">
-                                <div class="skill-info">
-
-                                    <span>Go</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h4>Tools & Technologies</h4>
-                        <div class="skill-bars">
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Git & GitHub</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>VS Code</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Figma</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Photoshop</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 70%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-info">
-                                    <span>Spring Boot</span>
-
-                                </div>
-                                <div class="skill-progress">
-                                    <div class="progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
 
-
-
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Isuru Samod Kularathna</h3>
-                    <p>Web Developer & Designer</p>
+                <div class="footer-section">
+                    <h3>Isuru Samod</h3>
+                    <p>Full Stack Web Developer crafting innovative solutions for the modern web.</p>
                 </div>
-
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#skills">Skills</a>
-                 
-                </div>
-
-           
-                <div class="contact-form">
-                    <h3 class="h4 font-weight-bold">Follow Me</h3>
-                    <ul style="list-style: none; padding: 0; display: flex; gap: 10px; margin-top: 20px;">
-                        <li class="ftco-animate">
-                            <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/" target="_blank"
-                                rel="noopener noreferrer">
-                                <span class="fab fa-linkedin" style="font-size: 24px; color: #25d366;"></span>
-                            </a>
-                        </li>
-                        <li class="ftco-animate">
-                            <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL" target="_blank"
-                                rel="noopener noreferrer">
-                                <span class="fab fa-facebook" style="font-size: 24px; color: #25d366;"></span>
-                            </a>
-                        </li>
-                        <li class="ftco-animate">
-                            <a href="https://github.com/isurusamod" target="_blank" rel="noopener noreferrer">
-                                <span class="fab fa-github" style="font-size: 24px; color: #25d366;"></span>
-                            </a>
-                        </li>
-                        <li class="ftco-animate">
-                            <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello" target="_blank"
-                                rel="noopener noreferrer">
-                                <span class="fab fa-whatsapp" style="font-size: 24px; color: #25d366;"></span>
-                            </a>
-                        </li>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
                     </ul>
                 </div>
-            </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/isurusamod">GitHub</a>
+                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/">linkedin</a>
+                        <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello">whatsapp</a>
+                        <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL">facebook</a>
 
-            <div class="copyright">
-                <p>&copy; All rights reserved</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Isuru Samod. All rights reserved.</p>
             </div>
         </div>
     </footer>
