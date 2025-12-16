@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Isuru Samod</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    Navigation
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">Isuru Samod</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    Projects Section
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">My Projects</h1>
+                <p class="section-subtitle">Explore my recent work and creative solutions</p>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+            </div>
+
+
+            <div class="project-card" data-category="fullstack">
+                <div class="project-image">
+                    <img src="images/work2.jpg" alt="Project 1">
+                </div>
+                <div class="project-content">
+                    <h3>1st project in SLIATE Developed a Web Application for Hotel</h3>
+                    <p>A modern, full-featured e-commerce platform with real-time inventory management, secure payment
+                        processing, and an intuitive admin dashboard.</p>
+                    <div class="tech-stack">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>PHP</span>
+                        <span>Database sql</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://hotel-base-web-application.vercel.app/" class="btn small-btn">View
+                            Project</a>
+                        <a href="https://github.com/isurusamod/Hotel-base-Web-Application"
+                            class="btn small-btn secondary-btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="project-card" data-category="frontend">
+                <div class="project-image">
+                    <img src="images/work5.jpg" alt="Project 2">
+                </div>
+                <div class="project-content">
+                    <h3>Bookshop billing system</h3>
+                    <p>A task management application with admin can add billing with crud functionality and local
+                        storage.</p>
+                    <div class="tech-stack">
+                        <span>Using Java and NetBeans IDE</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="" class="btn small-btn">View Project</a>
+                        <a href="https://github.com/isurusamod/java-Billing-system"
+                            class="btn small-btn secondary-btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="project-card" data-category="fullstack">
+                <div class="project-image">
+                    <img src="images/work1.jpg" alt="Project 4">
+                </div>
+                <div class="project-content">
+                    <h3>Finaly project in SLIATE Developed an Web Site For Caregiver</h3>
+                    <p>A fully responsive e-commerce website with user can find caregiver in area and booking the
+                        cregiver and payment functionality</p>
+                    <div class="tech-stack">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Laravel Framework</span>
+                        <span>Database sql</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="" class="btn small-btn">View Project</a>
+
+                        <a href="https://github.com/isurusamod/care-giver-web-Application"
+                            class="btn small-btn secondary-btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="project-card" data-category="backend">
+                <div class="project-image">
+                    <img src="images/work4.jpg" alt="Project 3">
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>A clean and modern portfolio website showcasing my work and skills</p>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://isurusamod.github.io/isurusamod-portfolio/" class="btn small-btn">View
+                        Project</a>
+                    <a href="https://github.com/isurusamod/isurusamod-portfolio"
+                        class="btn small-btn secondary-btn">Source Code</a>
+                </div>
+            </div>
+
+            <br>
+            <div class="project-card" data-category="backend">
+                <div class="project-image">
+                    <img src="images/work6.png" alt="Project 4">
+                </div>
+                <div class="project-content">
+                    <h3>courier management system system</h3>
+                    <p>A fully responsive e-commerce website with user can add parcel to the site and he can tracing
+                        parcel and admin can update functionality</p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Database sql</span>
+
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://isurusamod.github.io/isurusamod-portfolio/" class="btn small-btn">View
+                        Project</a>
+                    <a href="https://github.com/isurusamod/isurusamod-portfolio"
+                        class="btn small-btn secondary-btn">Source Code</a>
+                </div>
+            </div>
+            <br>
+            <div class="project-card" data-category="backend">
+                <div class="project-image">
+                    <img src="images/work7.png" alt="Project 4">
+                </div>
+                <div class="project-content">
+                    <h3>Software company web site</h3>
+                    <p>A fully responsive e-commerce website for the software company with full tech functionality
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Database sql</span>
+
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://greenbiz.lk/" class="btn small-btn">View Project</a>
+                    <a href="" class="btn small-btn secondary-btn">Source Code</a>
+                </div>
+            </div>
+            <br>
+            <div class="project-card" data-category="backend">
+                <div class="project-image">
+                    <img src="images/work8.png" alt="Project 4">
+                </div>
+                <div class="project-content">
+                    <h3>Construction web site</h3>
+                    <p>A fully responsive e-commerce website for the construction company with full tech functionality
+                    </p>
+                    <div class="project-tags">
+                        <span>Wordpress</span>
+                        <span>Elementor Pro</span>
+                        <span>Database sql</span>
+
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="" class="btn small-btn">View Project</a>
+                    <a href="https://github.com/isurusamod/Construction-Website-Wordpress-Elementor"
+                        class="btn small-btn secondary-btn">Source Code</a>
+                </div>
+
+            </div>
+        </div>
+
+
+        </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Isuru Samod</h3>
+                    <p>Full Stack Web Developer crafting innovative solutions for the modern web.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/isurusamod">GitHub</a>
+                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/">linkedin</a>
+                        <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello">whatsapp</a>
+                        <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL">facebook</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Isuru Samod. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
