@@ -996,7 +996,7 @@ body {
   }
 }
 
-/* Prevent hover effects on touch devices */
+
 @media (hover: none) and (pointer: coarse) {
   .project-card:hover,
   .experience-card:hover,
