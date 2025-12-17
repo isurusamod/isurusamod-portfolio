@@ -56,6 +56,7 @@ body {
   color: var(--color-accent);
   text-decoration: none;
   transition: var(--transition);
+  z-index: 1001;
 }
 
 .logo:hover {
@@ -105,6 +106,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 5px;
+  z-index: 1001;
 }
 
 .mobile-menu-btn span {
@@ -128,6 +130,7 @@ body {
   align-items: center;
   gap: 4rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .hero-text {
@@ -142,13 +145,19 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile-image img {
   width: 350px;
   height: 450px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--color-accent);
+  box-shadow: 0 10px 40px rgba(20, 184, 166, 0.3);
 }
 
 .hero-title {
@@ -386,7 +395,7 @@ body {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
 }
 
@@ -542,7 +551,7 @@ body {
 
 .tech-tags-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1rem;
 }
 
@@ -620,10 +629,10 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - IMPROVED BREAKPOINTS
+   RESPONSIVE DESIGN - MOBILE FIRST APPROACH
    ============================================ */
 
-/* Large Laptop/Desktop (1200px - 1440px+) */
+/* Large Desktop (1200px+) */
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;
@@ -634,14 +643,15 @@ body {
   }
 }
 
-/* Laptop (992px - 1199px) */
+/* Laptop to Desktop (992px - 1199px) */
 @media (max-width: 1199px) {
   .container {
-    padding: 0 2rem;
+    max-width: 100%;
+    padding: 0 2.5rem;
   }
   
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
   }
   
   .hero-subtitle {
@@ -653,13 +663,17 @@ body {
   }
   
   .profile-image img {
-    width: 300px;
-    height: 400px;
+    width: 320px;
+    height: 420px;
   }
 }
 
-/* Tablet Landscape (900px - 991px) */
+/* Tablet Landscape (768px - 991px) */
 @media (max-width: 991px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
   .nav-links {
     gap: 1.5rem;
   }
@@ -673,7 +687,7 @@ body {
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
   
   .hero-subtitle {
@@ -685,7 +699,7 @@ body {
   }
   
   .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
   
   .experience-grid {
@@ -693,44 +707,73 @@ body {
   }
   
   .profile-image img {
-    width: 280px;
-    height: 370px;
+    width: 300px;
+    height: 390px;
   }
 }
 
-/* Tablet Portrait (768px - 899px) */
-@media (max-width: 899px) {
+/* Tablet Portrait & Mobile (max 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  /* Mobile Navigation */
   .mobile-menu-btn {
     display: flex;
   }
 
   .nav-links {
     position: fixed;
-    top: 70px;
-    left: -100%;
+    top: 65px;
+    left: 0;
+    right: 0;
     flex-direction: column;
     background-color: rgba(30, 41, 59, 0.98);
     backdrop-filter: blur(10px);
-    width: 100%;
-    padding: 2rem;
-    gap: 1.5rem;
-    transition: left 0.3s ease;
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem 2rem;
+    gap: 0;
+    transform: translateY(-150%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid var(--color-border);
+    max-height: calc(100vh - 65px);
+    overflow-y: auto;
   }
 
   .nav-links.active {
-    left: 0;
+    transform: translateY(0);
+  }
+  
+  .nav-links li {
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .nav-links li:last-child {
+    border-bottom: none;
   }
   
   .nav-links a {
     font-size: 1.1rem;
-    padding: 0.5rem 0;
+    padding: 1rem 0.5rem;
+    display: block;
+    width: 100%;
+  }
+  
+  .nav-links a::after {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding-top: 100px;
+    min-height: auto;
+    padding-bottom: 60px;
   }
 
   .hero-content {
     flex-direction: column-reverse;
-    gap: 2.5rem;
+    gap: 3rem;
     text-align: center;
   }
   
@@ -738,88 +781,54 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+  }
+
+  .hero-greeting {
+    font-size: 1.1rem;
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .hero-description {
     font-size: 1rem;
+    max-width: 600px;
   }
   
   .hero-buttons {
     justify-content: center;
+    width: 100%;
+    max-width: 500px;
   }
   
   .social-links {
     justify-content: center;
   }
 
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  
-  .section-title {
-    font-size: 2.3rem;
-  }
-  
-  .subsection-title {
-    font-size: 1.8rem;
+  .profile-image {
+    width: 100%;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
   .profile-image img {
-    width: 250px;
-    height: 330px;
+    width: 280px;
+    height: 360px;
   }
-}
 
-/* Mobile Landscape / Large Phone (576px - 767px) */
-@media (max-width: 767px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-  
-  .hero {
-    padding-top: 70px;
-  }
-  
+  /* Sections */
   .page-section {
     padding: 100px 0 60px;
-  }
-
-  .hero-title {
-    font-size: 2.3rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.3rem;
+    min-height: auto;
   }
   
-  .hero-greeting {
-    font-size: 1.1rem;
-  }
-
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .section-subtitle {
@@ -827,15 +836,23 @@ body {
   }
   
   .subsection-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+
+  /* About Section */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   
   .about-text h2 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
-  
-  .category-title {
-    font-size: 1.5rem;
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .filter-buttons {
@@ -843,30 +860,41 @@ body {
   }
   
   .filter-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
   }
   
   .project-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+  }
+  
+  /* Experience */
+  .experience-grid {
+    grid-template-columns: 1fr;
   }
   
   .experience-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+  }
+  
+  /* Skills */
+  .category-title {
+    font-size: 1.6rem;
   }
   
   .tech-tags-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
   
-  .profile-image img {
-    width: 220px;
-    height: 290px;
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
-/* Mobile Portrait / Small Phone (480px - 575px) */
-@media (max-width: 575px) {
+/* Mobile Devices (max 576px) */
+@media (max-width: 576px) {
   .container {
     padding: 0 1.25rem;
   }
@@ -875,9 +903,17 @@ body {
     font-size: 1.3rem;
   }
 
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: 90px;
+  }
+
   .hero-title {
     font-size: 2rem;
-    line-height: 1.1;
   }
 
   .hero-subtitle {
@@ -889,48 +925,83 @@ body {
   }
 
   .hero-buttons {
+    flex-direction: column;
     width: 100%;
   }
 
   .btn {
     width: 100%;
-    padding: 0.8rem 1.5rem;
-  }
-  
-  .social-links {
-    width: 100%;
-    justify-content: center;
+    padding: 0.875rem 1.5rem;
   }
   
   .social-link {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
   }
 
+  .profile-image img {
+    width: 240px;
+    height: 310px;
+  }
+
+  /* Sections */
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
   
   .section-header {
     margin-bottom: 3rem;
   }
   
+  .subsection-title {
+    font-size: 1.6rem;
+  }
+  
+  .about-text h2 {
+    font-size: 1.6rem;
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+  }
+  
+  /* Projects */
+  .filter-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+  }
+  
   .projects-grid {
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
   
   .project-content {
     padding: 1.25rem;
   }
   
+  .project-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  /* Experience */
   .experience-card {
     padding: 1.5rem;
   }
   
+  .experience-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  /* Skills */
   .skill-item {
     padding: 1.25rem;
   }
   
+  .tech-tags-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  }
+  
+  /* Footer */
   .footer {
     padding: 2.5rem 0 1rem;
   }
@@ -938,19 +1009,27 @@ body {
   .footer-section h3 {
     font-size: 1.3rem;
   }
-  
-  .profile-image img {
-    width: 200px;
-    height: 260px;
-  }
 }
 
-/* Extra Small Mobile (max 479px) */
-@media (max-width: 479px) {
+/* Extra Small Mobile (max 400px) */
+@media (max-width: 400px) {
   .container {
     padding: 0 1rem;
   }
 
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    padding: 4.5rem 1.5rem 2rem;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  /* Hero */
   .hero-title {
     font-size: 1.75rem;
   }
@@ -962,49 +1041,133 @@ body {
   .hero-greeting {
     font-size: 1rem;
   }
+  
+  .hero-description {
+    font-size: 0.9rem;
+  }
 
+  .btn {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .profile-image img {
+    width: 200px;
+    height: 260px;
+  }
+
+  /* Sections */
   .section-title {
     font-size: 1.6rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
   }
   
   .subsection-title {
     font-size: 1.4rem;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  .about-text h2 {
+    font-size: 1.4rem;
   }
   
-  .tech-tags-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  .category-title {
+    font-size: 1.3rem;
+  }
+  
+  /* Projects */
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  
+  .project-content {
+    padding: 1rem;
+  }
+  
+  .project-content h3 {
+    font-size: 1.2rem;
   }
   
   .tech-tag {
     font-size: 0.8rem;
-    padding: 0.35rem 0.7rem;
+    padding: 0.35rem 0.65rem;
   }
   
-  .profile-image img {
-    width: 180px;
-    height: 240px;
+  .tech-tags-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+  
+  /* Experience */
+  .experience-card {
+    padding: 1.25rem;
+  }
+  
+  .experience-card h3 {
+    font-size: 1.2rem;
   }
   
   .experience-icon {
     width: 56px;
     height: 56px;
   }
+  
+  /* Skills */
+  .skill-item {
+    padding: 1rem;
+  }
+  
+  /* Footer */
+  .footer-section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
 }
 
-
+/* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
   .project-card:hover,
   .experience-card:hover,
-  .skill-item:hover {
+  .skill-item:hover,
+  .btn:hover,
+  .social-link:hover {
     transform: none;
   }
   
   .project-card:hover .project-image img {
     transform: none;
+  }
+  
+  /* Increase tap target sizes */
+  .nav-links a {
+    padding: 1rem;
+  }
+  
+  .filter-btn {
+    min-height: 44px;
+  }
+  
+  .btn {
+    min-height: 48px;
+  }
+  
+  .social-link {
+    min-width: 48px;
+    min-height: 48px;
   }
 }
