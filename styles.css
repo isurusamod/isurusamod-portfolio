@@ -295,10 +295,13 @@ body {
 }
 
 .about-image img {
-  width: 100%;
-  border-radius: 12px;
+  width: 70%;
+  display: block;
+  margin-left: 10%;
+  border-radius: 102px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
+
 
 .about-text h2 {
   font-size: 2rem;
