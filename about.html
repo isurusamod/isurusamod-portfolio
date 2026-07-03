@@ -1,191 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Isuru Samod</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About · Isuru Samod</title>
+  <!-- Tailwind + Google Fonts + Font Awesome (same as original) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <style>
+    /* same custom styles + small polish */
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .heading-font { font-family: 'Playfair Display', serif; }
+    .hero-bg { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); }
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-link {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(to right, #d4af37, #f5d76e);
+      transition: width 0.4s ease;
+    }
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+    .experience-card {
+      transition: all 0.4s ease;
+    }
+    .experience-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.15);
+    }
+    #mobileMenu { display: none; }
+    #mobileMenu.open { display: block; }
+    /* fix for sticky image on mobile */
+    @media (max-width: 768px) {
+      .sticky { position: relative; top: 0; }
+    }
+  </style>
 </head>
+<body class="bg-zinc-950 text-white antialiased">
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">Isuru Samod</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                </ul>
-            </div>
+  <!-- Navbar (fully fixed) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-xl font-bold text-black">IS</div>
+          <span class="text-2xl font-semibold tracking-tight heading-font">Isuru Samod</span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-10 text-sm font-medium">
+          <li><a href="index.html" class="nav-link hover:text-amber-300">Home</a></li>
+          <li><a href="about.html" class="nav-link active text-white">About</a></li>
+          <li><a href="projects.html" class="nav-link hover:text-amber-300">Projects</a></li>
+          <li><a href="skills.html" class="nav-link hover:text-amber-300">Skills</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+          <a href="https://drive.google.com/file/d/1ceRQKN8Es7SatAs9-uvFokBGF16QyNAq/view?usp=sharing" 
+             target="_blank"
+             class="hidden md:flex px-6 py-2.5 text-sm font-semibold border border-amber-400 hover:bg-amber-400 hover:text-black transition-all rounded-2xl">
+             Resume
+          </a>
+          <button id="mobileMenuBtn" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
 
-    <!-- About Section -->
-    <section class="page-section">
-        <div class="container">
-            <div class="section-header">
-                <h1 class="section-title">About Me</h1>
-                <p class="section-subtitle">Get to know more about my journey and expertise</p>
-            </div>
+    <!-- Mobile menu dropdown -->
+    <div id="mobileMenu" class="md:hidden glass border-t border-white/10 px-6 py-8">
+      <ul class="flex flex-col gap-6 text-lg font-medium text-center">
+        <li><a href="index.html" class="block py-2 hover:text-amber-300">Home</a></li>
+        <li><a href="about.html" class="block py-2 text-amber-400">About</a></li>
+        <li><a href="projects.html" class="block py-2 hover:text-amber-300">Projects</a></li>
+        <li><a href="skills.html" class="block py-2 hover:text-amber-300">Skills</a></li>
+        <li><a href="https://drive.google.com/file/d/1ceRQKN8Es7SatAs9-uvFokBGF16QyNAq/view?usp=sharing" target="_blank" class="block py-3 mt-4 bg-amber-400 text-black rounded-2xl font-bold">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
 
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/bg_4.png" alt="Isuru Samod - Full Stack Developer">
-                </div>
-                <div class="about-text">
-                    <h2>Frontend Developer & Problem Solver</h2>
-                    <p>
-                        I'm a passionate frontend web developer with expertise in building modern,
-                        scalable web applications. With a strong foundation in both frontend and backend
-                        technologies, I create seamless digital experiences that solve real world problems.
-                    </p>
-                    <p>
-                        My journey in web development began with a curiosity about how the web works.
-                        Over time, I've gained valuable hands on experience, including a 6-month internship
-                        at <strong>Cypso labs Pvt Ltd</strong> as a Full Stack Developer, and over a year
-                        of experience as a <strong>Frontend Developer</strong> at <strong>Codeways Pvt Ltd</strong>.
-                        These experiences allowed me to work on diverse projects, collaborate with cross-functional
-                        teams,
-                        and enhance my problem solving and development skills.
-                    </p>
-                    <p>
-                        I specialize in modern web technologies, including React, Next.js, WordPress, and quality
-                        assurance.
-                        I am proficient in JavaScript, HTML, CSS, and continuously expand my skills to stay current
-                        with the evolving tech landscape of 2026. Additionally, I have experience with responsive
-                        design,
-                        UI/UX best practices, and integrating APIs to build dynamic and user-friendly applications.
-                    </p>
-                    <p>
-                        When I'm not coding, you'll find me exploring new technologies, contributing to
-                        open source projects, writing technical blogs, or sharing knowledge with the developer
-                        community.
-                        I am passionate about continuous learning and enjoy mentoring junior developers and
-                        collaborating
-                        on innovative projects.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- Experience Section -->
-            <div class="experience-section">
-                <h2 class="subsection-title">Experience Highlights</h2>
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <div class="experience-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                        </div>
-                        <h3>Software Engineer Intern (6+ Months)</h3>
-                        <p><strong>Cypso labs Pvt Ltd</strong></p>
-                        <p>
-                            During my time at Cypso Labs Pvt Ltd, I gained hands-on experience in real world software
-                            development by working on live projects with a strong focus on front end development. I
-                            developed and maintained responsive web applications using React.js and modern JavaScript,
-                            creating user friendly interfaces and improving overall user experience. I collaborated with
-                            senior developers to implement new features, fix bugs, and enhance application performance.
-                            Additionally, I participated in testing, code reviews, and Agile development practices,
-                            which helped strengthen my teamwork, problem solving, and software development skills.
-                        </p>
-                        <a href="https://drive.google.com/file/d/1jJQEqefd4bb3L1Pb-kf73s_I5_446-ti/view?usp=sharing"
-                            class="btn btn-secondary" download
-                            style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            My Intern Service Letter
-                        </a>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="experience-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                        </div>
-                        <h3>Associate Software Engineer (Frontend)</h3>
-                        <p><strong>Codeways Pvt Ltd</strong></p>
-                        <p>
-                            One year of experience at Codewyas Pvt Ltd, primarily focused on front-end web development
-                            using modern technologies. Developed responsive and user friendly interfaces, implemented UI
-                            components, integrated APIs with the frontend, and fixed bugs to improve application
-                            performance. Collaborated with team members to deliver reliable and visually consistent web
-                            applications.
-                        </p>
-                        <a href="https://drive.google.com/file/d/1eBj51siks8uUDJqIaok63b1RX3epkpdi/view?usp=sharing"
-                            class="btn btn-secondary" download
-                            style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            My Associate Service Letter
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <!-- Hero / about header -->
+  <section class="hero-bg pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-3xl glass mb-6">
+          <span class="text-amber-400">✦</span>
+          <span class="uppercase tracking-widest text-sm">My Story</span>
         </div>
-    </section>
+        <h1 class="text-6xl md:text-7xl heading-font font-semibold mb-6">About Me</h1>
+        <p class="text-xl text-zinc-400">Passionate Full Stack Developer crafting exceptional digital experiences</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Isuru Samod</h3>
-                    <p>Full Stack Web Developer crafting innovative solutions for the modern web.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="skills.html">Skills</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="footer-social">
-                        <a href="https://github.com/isurusamod">GitHub</a>
-                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/">linkedin</a>
-                        <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello">whatsapp</a>
-                        <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL">facebook</a>
-
-                    </div>
-                </div>
+  <!-- Main content: about + experience -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- grid: image + text -->
+      <div class="grid md:grid-cols-12 gap-16 items-start">
+        <!-- Image column (sticky on desktop) -->
+        <div class="md:col-span-5">
+          <div class="md:sticky md:top-28">
+            <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+              <img src="images/bg_4.png" 
+                   alt="Isuru Samod" 
+                   class="w-full h-auto object-cover" />
             </div>
+            <div class="mt-8 text-center">
+              <div class="inline-flex items-center gap-2 text-amber-400">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="font-medium">Open to opportunities in 2026</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Isuru Samod. All rights reserved.</p>
-        </div>
-        </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- Text content -->
+        <div class="md:col-span-7 space-y-8 text-lg leading-relaxed text-zinc-300">
+          <h2 class="text-4xl heading-font text-white">Frontend Developer &amp; Problem Solver</h2>
+          
+          <p>
+            I'm a passionate frontend web developer with expertise in building modern, scalable, 
+            and visually stunning web applications. With a strong foundation in both frontend and backend 
+            technologies, I create seamless digital experiences that solve real-world problems.
+          </p>
+
+          <p>
+            My journey began with curiosity about how the web works. Today, I bring over <strong>1.5 years</strong> 
+            of professional experience, including a 6 month internship at <strong>Cypso Labs Pvt Ltd</strong> 
+            as a Full Stack Developer and more than a year as a <strong>Frontend Developer</strong> at 
+            <strong>Codeways Pvt Ltd</strong>. I am currently working as a <strong>WordPress Developer</strong> at 
+            <strong>Web Spark Pvt Ltd</strong>.
+          </p>
+
+          <p>
+            I specialize in modern web technologies <strong>React, Next.js, TypeScript, Tailwind CSS, 
+            WordPress</strong>, and more. I'm deeply focused on performance, accessibility, and creating 
+            delightful user interfaces that stand out in 2026's competitive digital landscape.
+          </p>
+
+          <p class="pt-4">
+            When I'm not coding, I explore emerging technologies, contribute to open source, write technical 
+            blogs, and mentor aspiring developers. I believe in continuous learning and collaborative growth.
+          </p>
+        </div>
+      </div>
+
+      <!-- Experience section -->
+      <div class="mt-28">
+        <h2 class="text-4xl heading-font text-center mb-12">Experience Highlights</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+           <!-- Card 1: Webspark -->
+          <div class="experience-card glass rounded-3xl p-8 border border-white/10">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/10 flex items-center justify-center text-3xl flex-shrink-0">
+                💼
+              </div>
+              <div class="flex-1">
+                <div class="uppercase text-xs tracking-widest text-amber-400 mb-1">currently</div>
+                <h3 class="text-2xl font-semibold">Associate WebDeveloper (Frontend)</h3>
+                <p class="text-amber-300 mt-1">Webspark Pvt Ltd</p>
+                <p class="mt-6 text-zinc-400">
+                  Focused on building responsive and user-friendly interfaces using modern frontend technologies and WordPress. Implemented UI components, integrated APIs, optimized performance, and developed custom WordPress websites and themes while collaborating with the team at Web Spark Pvt Ltd.
+                </p>
+               
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Codeways -->
+          <div class="experience-card glass rounded-3xl p-8 border border-white/10">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/10 flex items-center justify-center text-3xl flex-shrink-0">
+                💼
+              </div>
+              <div class="flex-1">
+                <div class="uppercase text-xs tracking-widest text-amber-400 mb-1">1+ Year</div>
+                <h3 class="text-2xl font-semibold">Associate Software Engineer (Frontend)</h3>
+                <p class="text-amber-300 mt-1">Codeways Pvt Ltd</p>
+                <p class="mt-6 text-zinc-400">
+                  Focused on building responsive and user-friendly interfaces. Implemented UI components, 
+                  integrated APIs, optimized performance, and collaborated with the team to deliver 
+                  high-quality web applications.
+                </p>
+                <a href="https://drive.google.com/file/d/1eBj51siks8uUDJqIaok63b1RX3epkpdi/view?usp=sharing" 
+                   target="_blank"
+                   class="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/30 hover:border-amber-400 transition-colors">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Associate Service Letter</span>
+                </a>
+              </div>
+            </div>
+          </div>
+         
+           <!-- Card 3: Cypso Labs -->
+          <div class="experience-card glass rounded-3xl p-8 border border-white/10">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/10 flex items-center justify-center text-3xl flex-shrink-0">
+                💼
+              </div>
+              <div class="flex-1">
+                <div class="uppercase text-xs tracking-widest text-amber-400 mb-1">6+ Months</div>
+                <h3 class="text-2xl font-semibold">Software Engineer Intern</h3>
+                <p class="text-amber-300 mt-1">Cyspo Labs Pvt Ltd</p>
+                <p class="mt-6 text-zinc-400">
+                  Worked on live projects with a strong focus on frontend development. Built responsive 
+                  applications using React.js, collaborated with senior developers, participated in code 
+                  reviews, and followed Agile practices.
+                </p>
+                <a href="https://drive.google.com/file/d/1jJQEqefd4bb3L1Pb-kf73s_I5_446-ti/view?usp=sharing" 
+                   target="_blank"
+                   class="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/30 hover:border-amber-400 transition-colors">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Intern Service Letter</span>
+                </a>
+              </div>
+            </div>
+          </div>
+               <!-- Card 3: gss -->
+          <div class="experience-card glass rounded-3xl p-8 border border-white/10">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/10 flex items-center justify-center text-3xl flex-shrink-0">
+                💼
+              </div>
+              <div class="flex-1">
+                <div class="uppercase text-xs tracking-widest text-amber-400 mb-1">One year</div>
+                <h3 class="text-2xl font-semibold">Product Quality Assurance</h3>
+                <p class="text-amber-300 mt-1">Global system solution Pvt Ltd</p>
+                <p class="mt-6 text-zinc-400">
+                 Worked in QA Validation, testing web and desktop applications, identifying defects, documenting bugs, 
+and collaborating with developers to ensure software quality and reliability.  
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-20 bg-black border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-2xl font-bold text-black">IS</div>
+            <span class="text-3xl font-semibold heading-font">Isuru Samod</span>
+          </div>
+          <p class="text-zinc-400">Creating elegant digital experiences with passion and precision.</p>
+        </div>
+
+        <div>
+          <h4 class="uppercase text-amber-300 text-sm tracking-widest mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-zinc-400">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="about.html" class="hover:text-white">About</a></li>
+            <li><a href="projects.html" class="hover:text-white">Projects</a></li>
+            <li><a href="skills.html" class="hover:text-white">Skills</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="uppercase text-amber-300 text-sm tracking-widest mb-6">Connect</h4>
+          <div class="flex gap-6 text-3xl text-zinc-400">
+            <a href="https://github.com/isurusamod" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://wa.me/94702019784" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center text-zinc-500 text-sm mt-16 pt-8 border-t border-white/10">
+        &copy; 2026 Isuru Samod. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu toggle script (same as original, robust) -->
+  <script>
+    (function() {
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      let isOpen = false;
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          isOpen = !isOpen;
+          mobileBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark text-2xl"></i>' : '<i class="fa-solid fa-bars text-2xl"></i>';
+          mobileMenu.classList.toggle('open', isOpen);
+        });
+
+        // close on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            isOpen = false;
+            mobileMenu.classList.remove('open');
+            mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+          });
+        });
+
+        // close on outside click
+        document.addEventListener('click', function(e) {
+          if (isOpen && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+            isOpen = false;
+            mobileMenu.classList.remove('open');
+            mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+          }
+        });
+      }
+    })();
+  </script>
+
+  <!-- small fix for possible missing image fallback (inline) -->
+  <noscript><div style="display:none;">JavaScript enabled for best experience</div></noscript>
 </body>
-
 </html>

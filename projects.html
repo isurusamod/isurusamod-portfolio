@@ -1,253 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Isuru Samod</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(to right, #d4af37, #f5d76e);
+            transition: width 0.4s ease;
+        }
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px -15px rgb(212 175 55 / 0.2);
+        }
+        .project-image img {
+            transition: transform 0.6s ease;
+        }
+        .project-card:hover .project-image img {
+            transform: scale(1.08);
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .filter-btn.active {
+            border-color: #fbbf24;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.08);
+        }
+        .filter-btn:not(.active):hover {
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+        #mobileMenu {
+            display: none;
+        }
+        #mobileMenu.open {
+            display: block;
+        }
+    </style>
 </head>
+<body class="bg-zinc-950 text-white">
 
-<body>
-    Navigation
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">Isuru Samod</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-xl font-bold text-black">IS</div>
+                    <span class="text-2xl font-semibold tracking-tight heading-font">Isuru Samod</span>
+                </a>
+
+                <ul class="hidden md:flex items-center gap-10 text-sm font-medium">
+                    <li><a href="index.html" class="nav-link hover:text-amber-300">Home</a></li>
+                    <li><a href="about.html" class="nav-link hover:text-amber-300">About</a></li>
+                    <li><a href="projects.html" class="nav-link active text-white">Projects</a></li>
+                    <li><a href="skills.html" class="nav-link hover:text-amber-300">Skills</a></li>
                 </ul>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://drive.google.com/file/d/1ceRQKN8Es7SatAs9-uvFokBGF16QyNAq/view?usp=sharing" 
+                       target="_blank"
+                       class="hidden md:flex px-6 py-2.5 text-sm font-semibold border border-amber-400 hover:bg-amber-400 hover:text-black transition-all rounded-2xl">
+                       Resume
+                    </a>
+                    <button id="mobileMenuBtn" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="md:hidden glass border-t border-white/10 px-6 py-8">
+            <ul class="flex flex-col gap-6 text-lg font-medium text-center">
+                <li><a href="index.html" class="block py-2 hover:text-amber-300">Home</a></li>
+                <li><a href="about.html" class="block py-2 hover:text-amber-300">About</a></li>
+                <li><a href="projects.html" class="block py-2 text-amber-400">Projects</a></li>
+                <li><a href="skills.html" class="block py-2 hover:text-amber-300">Skills</a></li>
+                <li><a href="https://drive.google.com/file/d/1ceRQKN8Es7SatAs9-uvFokBGF16QyNAq/view?usp=sharing" target="_blank" class="block py-3 mt-4 bg-amber-400 text-black rounded-2xl font-bold">Resume</a></li>
+            </ul>
         </div>
     </nav>
 
-    Projects Section
-    <section class="page-section">
-        <div class="container">
-            <div class="section-header">
-                <h1 class="section-title">My Projects</h1>
-                <p class="section-subtitle">Explore my recent work and creative solutions</p>
-            </div>
-
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
-                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-                <button class="filter-btn" data-filter="backend">Backend</button>
-            </div>
-
-
-            <div class="project-card" data-category="fullstack">
-                <div class="project-image">
-                    <img src="images/work2.jpg" alt="Project 1">
-                </div>
-                <div class="project-content">
-                    <h3>1st project in SLIATE Developed a Web Application for Hotel</h3>
-                    <p>A modern, full-featured e-commerce platform with real-time inventory management, secure payment
-                        processing, and an intuitive admin dashboard.</p>
-                    <div class="tech-stack">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>PHP</span>
-                        <span>Database sql</span>
-                        <span>JavaScript</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://hotel-base-web-application.vercel.app/" class="btn small-btn">View
-                            Project</a>
-                        <a href="https://github.com/isurusamod/Hotel-base-Web-Application"
-                            class="btn small-btn secondary-btn">Source Code</a>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="project-card" data-category="frontend">
-                <div class="project-image">
-                    <img src="images/work5.jpg" alt="Project 2">
-                </div>
-                <div class="project-content">
-                    <h3>Bookshop billing system</h3>
-                    <p>A task management application with admin can add billing with crud functionality and local
-                        storage.</p>
-                    <div class="tech-stack">
-                        <span>Using Java and NetBeans IDE</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="" class="btn small-btn">View Project</a>
-                        <a href="https://github.com/isurusamod/java-Billing-system"
-                            class="btn small-btn secondary-btn">Source Code</a>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="project-card" data-category="fullstack">
-                <div class="project-image">
-                    <img src="images/work1.jpg" alt="Project 4">
-                </div>
-                <div class="project-content">
-                    <h3>Finaly project in SLIATE Developed an Web Site For Caregiver</h3>
-                    <p>A fully responsive e-commerce website with user can find caregiver in area and booking the
-                        cregiver and payment functionality</p>
-                    <div class="tech-stack">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Laravel Framework</span>
-                        <span>Database sql</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="" class="btn small-btn">View Project</a>
-
-                        <a href="https://github.com/isurusamod/care-giver-web-Application"
-                            class="btn small-btn secondary-btn">Source Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <div class="project-card" data-category="backend">
-                <div class="project-image">
-                    <img src="images/work4.jpg" alt="Project 3">
-                </div>
-                <div class="project-content">
-                    <h3>Portfolio Website</h3>
-                    <p>A clean and modern portfolio website showcasing my work and skills</p>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://isurusamod.github.io/isurusamod-portfolio/" class="btn small-btn">View
-                        Project</a>
-                    <a href="https://github.com/isurusamod/isurusamod-portfolio"
-                        class="btn small-btn secondary-btn">Source Code</a>
-                </div>
-            </div>
-
-            <br>
-            <div class="project-card" data-category="backend">
-                <div class="project-image">
-                    <img src="images/work6.png" alt="Project 4">
-                </div>
-                <div class="project-content">
-                    <h3>courier management system system</h3>
-                    <p>A fully responsive e-commerce website with user can add parcel to the site and he can tracing
-                        parcel and admin can update functionality</p>
-
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Database sql</span>
-
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://isurusamod.github.io/isurusamod-portfolio/" class="btn small-btn">View
-                        Project</a>
-                    <a href="https://github.com/isurusamod/isurusamod-portfolio"
-                        class="btn small-btn secondary-btn">Source Code</a>
-                </div>
-            </div>
-            <br>
-            <div class="project-card" data-category="backend">
-                <div class="project-image">
-                    <img src="images/work7.png" alt="Project 4">
-                </div>
-                <div class="project-content">
-                    <h3>Software company web site</h3>
-                    <p>A fully responsive e-commerce website for the software company with full tech functionality
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Database sql</span>
-
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://greenbiz.lk/" class="btn small-btn">View Project</a>
-                    <a href="" class="btn small-btn secondary-btn">Source Code</a>
-                </div>
-            </div>
-            <br>
-            <div class="project-card" data-category="backend">
-                <div class="project-image">
-                    <img src="images/work8.png" alt="Project 4">
-                </div>
-                <div class="project-content">
-                    <h3>Construction web site</h3>
-                    <p>A fully responsive e-commerce website for the construction company with full tech functionality
-                    </p>
-                    <div class="project-tags">
-                        <span>Wordpress</span>
-                        <span>Elementor Pro</span>
-                        <span>Database sql</span>
-
-                    </div>
-                </div>
-
-                <div class="project-links">
-                    <a href="" class="btn small-btn">View Project</a>
-                    <a href="https://github.com/isurusamod/Construction-Website-Wordpress-Elementor"
-                        class="btn small-btn secondary-btn">Source Code</a>
-                </div>
-
-            </div>
-        </div>
-
-
-        </div>
+    <!-- Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-950 to-black">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl heading-font font-semibold mb-4">My Projects</h1>
+            <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                A collection of carefully crafted digital experiences that blend creativity with technical excellence
+            </p>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Isuru Samod</h3>
-                    <p>Full Stack Web Developer crafting innovative solutions for the modern web.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="skills.html">Skills</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="footer-social">
-                        <a href="https://github.com/isurusamod">GitHub</a>
-                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/">linkedin</a>
-                        <a href="https://api.whatsapp.com/send?phone=94702019784&text=Hello">whatsapp</a>
-                        <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL">facebook</a>
+    <!-- Filters -->
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex flex-wrap gap-3 justify-center" id="filterButtons">
+            <button onclick="filterProjects('all', this)" class="filter-btn active px-8 py-3 rounded-3xl text-sm font-medium border border-amber-400 text-amber-400">All Projects</button>
+            <button onclick="filterProjects('fullstack', this)" class="filter-btn px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 text-white/70">Full Stack</button>
+            <button onclick="filterProjects('frontend', this)" class="filter-btn px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 text-white/70">Frontend</button>
+            <button onclick="filterProjects('backend', this)" class="filter-btn px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 text-white/70">Backend / Others</button>
+        </div>
+    </div>
 
+    <!-- Projects Grid -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+
+            <!-- Project 1 -->
+            <div class="project-card glass rounded-3xl overflow-hidden" data-category="fullstack">
+                <div class="project-image h-64 overflow-hidden">
+                    <img src="images/work2.jpg" alt="Hotel Management System" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold heading-font mb-3">Hotel Management System</h3>
+                    <p class="text-zinc-400 mb-6 line-clamp-3">
+                        A modern full-featured web application for hotel management with real-time inventory, booking system, and admin dashboard.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">HTML</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">CSS</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">PHP</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">MySQL</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">JavaScript</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://hotel-base-web-application.vercel.app/" target="_blank"
+                           class="flex-1 text-center py-4 bg-amber-400 hover:bg-amber-300 text-black font-semibold rounded-2xl transition">Live Demo</a>
+                        <a href="https://github.com/isurusamod/Hotel-base-Web-Application" target="_blank"
+                           class="flex-1 text-center py-4 border border-white/30 hover:border-white rounded-2xl transition">Source Code</a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Isuru Samod. All rights reserved.</p>
+
+            <!-- Project 2 -->
+            <div class="project-card glass rounded-3xl overflow-hidden" data-category="frontend">
+                <div class="project-image h-64 overflow-hidden">
+                    <img src="images/work5.jpg" alt="Bookshop Billing System" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold heading-font mb-3">Bookshop Billing System</h3>
+                    <p class="text-zinc-400 mb-6 line-clamp-3">
+                        Desktop application with full CRUD functionality for billing and inventory management using Java.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">Java</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">NetBeans</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="flex-1 text-center py-4 border border-white/30 hover:border-white rounded-2xl transition opacity-50 cursor-not-allowed">Live Demo</a>
+                        <a href="https://github.com/isurusamod/java-Billing-system" target="_blank"
+                           class="flex-1 text-center py-4 border border-white/30 hover:border-white rounded-2xl transition">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card glass rounded-3xl overflow-hidden" data-category="fullstack">
+                <div class="project-image h-64 overflow-hidden">
+                    <img src="images/work1.jpg" alt="Caregiver Platform" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold heading-font mb-3">Caregiver Booking Platform</h3>
+                    <p class="text-zinc-400 mb-6 line-clamp-3">
+                        Full-stack platform connecting users with caregivers, including booking and payment integration.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">Laravel</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">MySQL</span>
+                        <span class="text-xs px-4 py-1.5 bg-white/10 rounded-full">JavaScript</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="flex-1 text-center py-4 border border-white/30 hover:border-white rounded-2xl transition opacity-50 cursor-not-allowed">Live Demo</a>
+                        <a href="https://github.com/isurusamod/care-giver-web-Application" target="_blank"
+                           class="flex-1 text-center py-4 border border-white/30 hover:border-white rounded-2xl transition">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more projects similarly... -->
+            <!-- Portfolio, Courier, Greenbiz, Construction etc. -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-black border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-2xl font-bold text-black">IS</div>
+                        <span class="text-3xl font-semibold heading-font">Isuru Samod</span>
+                    </div>
+                    <p class="text-zinc-400">Turning ideas into elegant digital realities.</p>
+                </div>
+
+                <div>
+                    <h4 class="uppercase text-amber-300 text-sm tracking-widest mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-zinc-400">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About</a></li>
+                        <li><a href="projects.html" class="hover:text-white">Projects</a></li>
+                        <li><a href="skills.html" class="hover:text-white">Skills</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="uppercase text-amber-300 text-sm tracking-widest mb-6">Connect</h4>
+                    <div class="flex gap-6 text-3xl text-zinc-400">
+                        <a href="https://github.com/isurusamod" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/isuru-samod-3b7279214/" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://wa.me/94702019784" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/isuru.samod?mibextid=ZbWKwL" target="_blank" class="hover:text-amber-300"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-zinc-500 mt-16 pt-8 border-t border-white/10">
+                &copy; 2026 Isuru Samod. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <script>
+        // Filter projects with proper event handling
+        function filterProjects(category, button) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'border-amber-400', 'text-amber-400');
+                btn.classList.add('border-white/30', 'text-white/70');
+            });
+            
+            // Add active class to clicked button
+            if (button) {
+                button.classList.add('active', 'border-amber-400', 'text-amber-400');
+                button.classList.remove('border-white/30', 'text-white/70');
+            }
 
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = card.dataset.category === category ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            let isOpen = false;
+
+            mobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileBtn.innerHTML = '<i class="fa-solid fa-xmark text-2xl"></i>';
+                    mobileMenu.classList.add('open');
+                } else {
+                    mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+                    mobileMenu.classList.remove('open');
+                }
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    isOpen = false;
+                    mobileMenu.classList.remove('open');
+                    mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (isOpen && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    isOpen = false;
+                    mobileMenu.classList.remove('open');
+                    mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl"></i>';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
